@@ -2,12 +2,6 @@
 import random
 
 
-def is_space_free(board, move):
-    # Return true if the passed move is free on the passed board.
-    # Do not use self.board here because we also use the copied boards
-    return board[move] == ' '
-
-
 class TicTacToe:
     def __init__(self):
         self.board = [' '] * 10
@@ -62,6 +56,11 @@ class TicTacToe:
         else:
             self.board[self.move] = self.player_2_letter
 
+    def is_space_free(self, board, move):
+        # Return true if the passed move is free on the passed board.
+        # Do not use self.board here because we also use the copied boards
+        return board[move] == ' '
+
     def is_winner(self):
         # Given a board and a player's letter, this function returns True if that player has won.
         # We use bo instead of board and le instead of letter so we don't have to type as much.
@@ -90,8 +89,10 @@ class TicTacToe:
 
     def get_player_move(self):
         # Let the player type in their move.
-        move = ' '
-        while move not in '1 2 3 4 5 6 7 8 9'.split() or not is_space_free(the_board.board, int(move)):
+        print('What is your next move? (1-9)')
+        move = input()
+        while move not in '1 2 3 4 5 6 7 8 9'.split() or not self.is_space_free(self.board, int(move)):
+            print('That was not a valid choice.')
             print('What is your next move? (1-9)')
             move = input()
         self.move = int(move)
@@ -101,7 +102,7 @@ class TicTacToe:
         # Returns None if there is no valid move.
         possible_moves = []
         for i in moves_list:
-            if is_space_free(self.board, i):
+            if self.is_space_free(self.board, i):
                 possible_moves.append(i)
 
         if len(possible_moves) != 0:
@@ -112,7 +113,7 @@ class TicTacToe:
     def is_board_full(self):
         # Return True if every space on the board has been taken. Otherwise return False.
         for i in range(1, 10):
-            if is_space_free(self.board, i):
+            if self.is_space_free(self.board, i):
                 return False
         return True
 
