@@ -119,6 +119,7 @@ while True:
         if the_board.turn == 'Player 1':
             # Player 1's turn.
             the_board.draw_board()
+            print("Player 1")
             the_board.get_player_move()
             the_board.make_move()
 
@@ -137,6 +138,7 @@ while True:
         else:
             # Player 2's turn.
             the_board.draw_board()
+            print("Player 2")
             the_board.get_player_move()
             the_board.make_move()
 
