@@ -97,19 +97,6 @@ class TicTacToe:
             move = input()
         self.move = int(move)
 
-    def choose_random_move_from_list(self, moves_list):
-        # Returns a valid move from the passed list on the passed board.
-        # Returns None if there is no valid move.
-        possible_moves = []
-        for i in moves_list:
-            if self.is_space_free(self.board, i):
-                possible_moves.append(i)
-
-        if len(possible_moves) != 0:
-            return random.choice(possible_moves)
-        else:
-            return None
-
     def is_board_full(self):
         # Return True if every space on the board has been taken. Otherwise return False.
         for i in range(1, 10):
@@ -138,7 +125,7 @@ while True:
             if the_board.is_winner():
                 the_board.draw_board()
                 print('Player 1 has won the game! Player 2 loses.')
-                gameIsPlaying = False
+                game_is_playing = False
             else:
                 if the_board.is_board_full():
                     the_board.draw_board()
@@ -156,7 +143,7 @@ while True:
             if the_board.is_winner():
                 the_board.draw_board()
                 print('Player 2 has won the game! Player 1 loses.')
-                gameIsPlaying = False
+                game_is_playing = False
             else:
                 if the_board.is_board_full():
                     the_board.draw_board()
